@@ -1,5 +1,6 @@
 package dev.acosta.restwithspringbootandjavaerudio;
 
+import dev.acosta.restwithspringbootandjavaerudio.exceptions.UnsupportedMathOperationException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -13,7 +14,7 @@ public class MathController {
     public Double sum(@PathVariable(value = "numberOne") String numberOne,
                       @PathVariable(value = "numberTwo") String numberTwo) throws Exception {
         if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
-            throw new Exception();
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
