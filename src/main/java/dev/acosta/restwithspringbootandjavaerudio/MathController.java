@@ -33,4 +33,18 @@ public class MathController {
         }
         return 0D;
     }
+
+    @RequestMapping(value = "/subtract/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+    public Double subtract(@PathVariable(name = "numberOne") String numberOne,
+                           @PathVariable(name = "numberTwo") String numberTwo) throws Exception {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
+        }
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
+
+    //TODO Multiplication functionality
+    //TODO Division functionality
+    //TODO Simple average functionality
+    //TODO Square root
 }
