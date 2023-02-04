@@ -61,6 +61,20 @@ public class MathController {
         return convertToDouble(numberOne) / convertToDouble(numberTwo);
     }
 
-    //TODO Simple average functionality
-    //TODO Square root
+    @RequestMapping(value = "/average/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+    public Double average(@PathVariable(name = "numberOne") String numberOne,
+                          @PathVariable(name = "numberTwo") String numberTwo) throws Exception {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
+        }
+        return ( convertToDouble(numberOne) + convertToDouble(numberTwo) ) / 2;
+    }
+
+    @RequestMapping(value = "/square-root/{number}", method = RequestMethod.GET)
+    public Double squareRoot(@PathVariable(name = "number") String number) throws Exception {
+        if (!isNumeric(number)) {
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
+        }
+        return Math.sqrt(convertToDouble(number));
+    }
 }
