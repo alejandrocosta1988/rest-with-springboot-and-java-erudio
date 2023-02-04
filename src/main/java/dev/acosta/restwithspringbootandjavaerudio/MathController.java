@@ -43,8 +43,24 @@ public class MathController {
         return convertToDouble(numberOne) - convertToDouble(numberTwo);
     }
 
-    //TODO Multiplication functionality
-    //TODO Division functionality
+    @RequestMapping(value = "/multiply/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+    public Double multiply(@PathVariable(name = "numberOne") String numberOne,
+                           @PathVariable(name = "numberTwo") String numberTwo) throws Exception {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
+        }
+        return convertToDouble(numberOne) * convertToDouble(numberTwo);
+    }
+
+    @RequestMapping(value = "/divide/{numberOne}/{numberTwo}", method = RequestMethod.GET)
+    public Double divide(@PathVariable(name = "numberOne") String numberOne,
+                       @PathVariable(name = "numberTwo") String numberTwo) throws Exception {
+        if (!isNumeric(numberOne) || !isNumeric(numberTwo)) {
+            throw new UnsupportedMathOperationException("Please enter only numeric values.");
+        }
+        return convertToDouble(numberOne) / convertToDouble(numberTwo);
+    }
+
     //TODO Simple average functionality
     //TODO Square root
 }
