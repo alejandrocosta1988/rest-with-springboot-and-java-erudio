@@ -1,5 +1,6 @@
 package dev.acosta.restwithspringbootandjavaerudio;
 
+import dev.acosta.restwithspringbootandjavaerudio.basicmath.SimpleMath;
 import dev.acosta.restwithspringbootandjavaerudio.exceptions.UnsupportedMathOperationException;
 import dev.acosta.restwithspringbootandjavaerudio.util.UserInputCheck;
 import dev.acosta.restwithspringbootandjavaerudio.util.UserInputConvertion;
@@ -12,13 +13,15 @@ public class MathController {
 
     private final AtomicLong counter = new AtomicLong();
 
+    private SimpleMath math = new SimpleMath();
+
     @RequestMapping(value = "/sum/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double sum(@PathVariable(value = "numberOne") String numberOne,
                       @PathVariable(value = "numberTwo") String numberTwo) throws Exception {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return UserInputConvertion.convertNumericInputToDouble(numberOne) + UserInputConvertion.convertNumericInputToDouble(numberTwo);
+        return math.sum(UserInputConvertion.convertNumericInputToDouble(numberOne), UserInputConvertion.convertNumericInputToDouble(numberTwo));
     }
 
     @RequestMapping(value = "/subtract/{numberOne}/{numberTwo}", method = RequestMethod.GET)
