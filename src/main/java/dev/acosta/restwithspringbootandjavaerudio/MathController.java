@@ -2,6 +2,7 @@ package dev.acosta.restwithspringbootandjavaerudio;
 
 import dev.acosta.restwithspringbootandjavaerudio.exceptions.UnsupportedMathOperationException;
 import dev.acosta.restwithspringbootandjavaerudio.util.UserInputCheck;
+import dev.acosta.restwithspringbootandjavaerudio.util.UserInputConvertion;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
@@ -17,7 +18,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return convertToDouble(numberOne) + convertToDouble(numberTwo);
+        return UserInputConvertion.convertNumericInputToDouble(numberOne) + UserInputConvertion.convertNumericInputToDouble(numberTwo);
     }
 
     private boolean isNumeric(String userNumber) {
@@ -41,7 +42,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+        return UserInputConvertion.convertNumericInputToDouble(numberOne) - UserInputConvertion.convertNumericInputToDouble(numberTwo);
     }
 
     @RequestMapping(value = "/multiply/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -50,7 +51,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return convertToDouble(numberOne) * convertToDouble(numberTwo);
+        return UserInputConvertion.convertNumericInputToDouble(numberOne) * UserInputConvertion.convertNumericInputToDouble(numberTwo);
     }
 
     @RequestMapping(value = "/divide/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -59,7 +60,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return convertToDouble(numberOne) / convertToDouble(numberTwo);
+        return UserInputConvertion.convertNumericInputToDouble(numberOne) / UserInputConvertion.convertNumericInputToDouble(numberTwo);
     }
 
     @RequestMapping(value = "/average/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -68,7 +69,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return ( convertToDouble(numberOne) + convertToDouble(numberTwo) ) / 2;
+        return ( UserInputConvertion.convertNumericInputToDouble(numberOne) + UserInputConvertion.convertNumericInputToDouble(numberTwo) ) / 2;
     }
 
     @RequestMapping(value = "/square-root/{number}", method = RequestMethod.GET)
@@ -76,6 +77,6 @@ public class MathController {
         if (!UserInputCheck.isNumeric(number)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return Math.sqrt(convertToDouble(number));
+        return Math.sqrt(UserInputConvertion.convertNumericInputToDouble(number));
     }
 }

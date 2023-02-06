@@ -7,7 +7,7 @@ public class UserInputCheck {
         return correctUserNumberInput(userInput).matches("[-+]?[0-9]*\\.?[0-9]+");
     }
 
-    private static String correctUserNumberInput(String userInput) {
+    protected static String correctUserNumberInput(String userInput) {
         return userInput.replaceAll(",", ".");
     }
 
