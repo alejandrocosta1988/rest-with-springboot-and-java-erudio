@@ -21,21 +21,6 @@ public class MathController {
         return UserInputConvertion.convertNumericInputToDouble(numberOne) + UserInputConvertion.convertNumericInputToDouble(numberTwo);
     }
 
-    private boolean isNumeric(String userNumber) {
-        if (userNumber == null) return false;
-        String number = userNumber.replaceAll(",", ".");
-        return number.matches("[-+]?[0-9]*\\.?[0-9]+");
-    }
-
-    private Double convertToDouble(String userNumber) {
-        if (userNumber == null) return 0D;
-        String number = userNumber.replaceAll(",", ".");
-        if (isNumeric(number)) {
-            return Double.parseDouble(number);
-        }
-        return 0D;
-    }
-
     @RequestMapping(value = "/subtract/{numberOne}/{numberTwo}", method = RequestMethod.GET)
     public Double subtract(@PathVariable(name = "numberOne") String numberOne,
                            @PathVariable(name = "numberTwo") String numberTwo) throws Exception {
