@@ -30,7 +30,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return UserInputConvertion.convertNumericInputToDouble(numberOne) - UserInputConvertion.convertNumericInputToDouble(numberTwo);
+        return math.subtract(UserInputConvertion.convertNumericInputToDouble(numberOne), UserInputConvertion.convertNumericInputToDouble(numberTwo));
     }
 
     @RequestMapping(value = "/multiply/{numberOne}/{numberTwo}", method = RequestMethod.GET)
