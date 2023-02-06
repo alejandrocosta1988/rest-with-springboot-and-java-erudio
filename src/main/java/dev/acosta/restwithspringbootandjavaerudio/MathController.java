@@ -39,7 +39,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return UserInputConvertion.convertNumericInputToDouble(numberOne) * UserInputConvertion.convertNumericInputToDouble(numberTwo);
+        return math.multiply(UserInputConvertion.convertNumericInputToDouble(numberOne), UserInputConvertion.convertNumericInputToDouble(numberTwo));
     }
 
     @RequestMapping(value = "/divide/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -48,7 +48,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return UserInputConvertion.convertNumericInputToDouble(numberOne) / UserInputConvertion.convertNumericInputToDouble(numberTwo);
+        return math.divide(UserInputConvertion.convertNumericInputToDouble(numberOne), UserInputConvertion.convertNumericInputToDouble(numberTwo));
     }
 
     @RequestMapping(value = "/average/{numberOne}/{numberTwo}", method = RequestMethod.GET)
@@ -57,7 +57,7 @@ public class MathController {
         if (!UserInputCheck.isNumeric(numberOne) || !UserInputCheck.isNumeric(numberTwo)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return ( UserInputConvertion.convertNumericInputToDouble(numberOne) + UserInputConvertion.convertNumericInputToDouble(numberTwo) ) / 2;
+        return math.average(UserInputConvertion.convertNumericInputToDouble(numberOne), UserInputConvertion.convertNumericInputToDouble(numberTwo));
     }
 
     @RequestMapping(value = "/square-root/{number}", method = RequestMethod.GET)
@@ -65,6 +65,6 @@ public class MathController {
         if (!UserInputCheck.isNumeric(number)) {
             throw new UnsupportedMathOperationException("Please enter only numeric values.");
         }
-        return Math.sqrt(UserInputConvertion.convertNumericInputToDouble(number));
+        return math.squareRoot(UserInputConvertion.convertNumericInputToDouble(number));
     }
 }
