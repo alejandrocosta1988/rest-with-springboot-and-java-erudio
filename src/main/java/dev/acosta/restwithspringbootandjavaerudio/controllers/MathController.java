@@ -1,4 +1,4 @@
-package dev.acosta.restwithspringbootandjavaerudio;
+package dev.acosta.restwithspringbootandjavaerudio.controllers;
 
 import dev.acosta.restwithspringbootandjavaerudio.basicmath.SimpleMath;
 import dev.acosta.restwithspringbootandjavaerudio.exceptions.UnsupportedMathOperationException;
