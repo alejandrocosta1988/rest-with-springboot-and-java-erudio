@@ -1,5 +1,6 @@
 package dev.acosta.restwithspringbootandjavaerudio.services;
 
+import dev.acosta.restwithspringbootandjavaerudio.data.vo.v1.PersonVO;
 import dev.acosta.restwithspringbootandjavaerudio.exceptions.ResourceNotFoundException;
 import dev.acosta.restwithspringbootandjavaerudio.model.Person;
 import dev.acosta.restwithspringbootandjavaerudio.repositories.PersonRepository;
@@ -20,22 +21,22 @@ public class PersonServices {
     @Autowired
     private PersonRepository repository;
 
-    public Person findById(Long id) {
+    public PersonVO findById(Long id) {
         logger.info("Searching a person.");
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No records found for this ID."));
     }
 
-    public List<Person> findAll() {
+    public List<PersonVO> findAll() {
         logger.info("Searching all entries of person.");
         return repository.findAll();
     }
 
-    public Person create(Person person) {
+    public PersonVO create(PersonVO person) {
         logger.info("Creating new person.");
         return repository.save(person);
     }
 
-    public Person update(Person person) {
+    public PersonVO update(PersonVO person) {
         logger.info("Updating a person");
         Person entity = repository.findById(person.getId()).orElseThrow(() -> new ResourceNotFoundException("No record found for this ID."));
         entity.setFirstName(person.getFirstName());
