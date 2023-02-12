@@ -26,7 +26,7 @@ public class DozerConverterTest {
         assertEquals(Long.valueOf(0L), output.getId());
         assertEquals("First Name Test0", output.getFirstName());
         assertEquals("Last Name Test0", output.getLastName());
-        assertEquals("Addres Test0", output.getAddress());
+        assertEquals("Address Test0", output.getAddress());
         assertEquals("Male", output.getGender());
     }
 
