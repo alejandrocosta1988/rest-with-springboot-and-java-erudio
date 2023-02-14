@@ -1,6 +1,7 @@
 package dev.acosta.restwithspringbootandjavaerudio.services;
 
 import dev.acosta.restwithspringbootandjavaerudio.data.vo.v1.PersonVO;
+import dev.acosta.restwithspringbootandjavaerudio.data.vo.v2.PersonVOV2;
 import dev.acosta.restwithspringbootandjavaerudio.exceptions.ResourceNotFoundException;
 import dev.acosta.restwithspringbootandjavaerudio.mapper.DozerMapper;
 import dev.acosta.restwithspringbootandjavaerudio.model.Person;
@@ -35,6 +36,12 @@ public class PersonServices {
         logger.info("Creating new person.");
         Person newPerson = repository.save(DozerMapper.parseObject(person, Person.class));
         return DozerMapper.parseObject(newPerson, PersonVO.class);
+    }
+
+    public PersonVOV2 create(PersonVOV2 person) {
+        logger.info("Creating new person in v.2");
+        Person newPerson = repository.save(DozerMapper.parseObject(person, Person.class));
+        return DozerMapper.parseObject(newPerson, PersonVOV2.class);
     }
 
     public PersonVO update(PersonVO person) {
