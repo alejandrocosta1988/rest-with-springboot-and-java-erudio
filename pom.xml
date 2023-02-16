@@ -15,6 +15,8 @@
 	<description>Project developed while following a Rest with Spring Boot course on Udemy.</description>
 	<properties>
 		<java.version>17</java.version>
+		<flywaydb.version>9.14.1</flywaydb.version>
+		<flywaymysql.version>9.14.1</flywaymysql.version>
 	</properties>
 	<dependencies>
 
@@ -32,6 +34,22 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>${flywaydb.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+			<version>${flywaymysql.version}</version>
+		</dependency>
+
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
